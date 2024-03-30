@@ -1,1 +1,5 @@
 DoubleLinkedListTest.class
+DoubleLinkedListTest$SortTests.class
+DoubleLinkedListTest$GetTests.class
+DoubleLinkedListTest$RemoveTests.class
+DoubleLinkedListTest$ContainsTests.class

@@ -151,17 +151,17 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
     public void sort(Comparator<? super T> comparator) {
         if (size > 1) {
             boolean wasChanged = true;
-
+    
             while (wasChanged) {
                 wasChanged = false;
                 LinkedNode<T> current = first;
-
-                while (current != null && current.getNext() != last) {
+    
+                while (current.getNext() != null) { 
                     LinkedNode<T> next = current.getNext();
-                    if (next != null && comparator.compare(current.getItem(), next.getItem()) > 0) {
-                        T aux = current.getItem();
+                    if (comparator.compare(current.getItem(), next.getItem()) > 0) {
+                        T temp = current.getItem();
                         current.setItem(next.getItem());
-                        next.setItem(aux);
+                        next.setItem(temp);
                         wasChanged = true;
                     }
                     current = next;
