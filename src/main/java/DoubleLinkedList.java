@@ -1,5 +1,6 @@
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
 
@@ -110,13 +111,63 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
 
     @Override
     public void remove(T value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        if (first != null) {
+            if (first.getItem().equals(value)) {
+                first = first.getNext();
+                if (first == null) {
+                    last = null;
+                } else {
+                    first.setPrevious(null);
+                }
+                size--;
+            } else {
+                boolean found = false;
+                LinkedNode<T> aux = first;
+                while (aux != null && !found) {
+                    if (aux.getItem().equals(value)) {
+                        if (aux == last) {
+                            last = aux.getPrevious();
+                            if (last != null) {
+                                last.setNext(null);
+                            }
+                        } else {
+                            aux.getPrevious().setNext(aux.getNext());
+                            if (aux.getNext() != null) {
+                                aux.getNext().setPrevious(aux.getPrevious());
+                            }
+                        }
+                        size--;
+                        found = true;
+                    } else {
+                        aux = aux.getNext();
+                    }
+                }
+
+            }
+        }
     }
 
     @Override
     public void sort(Comparator<? super T> comparator) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sort'");
+        if (size > 1) {
+            boolean wasChanged = true;
+
+            while (wasChanged) {
+                wasChanged = false;
+                LinkedNode<T> current = first;
+
+                while (current != null && current.getNext() != last) {
+                    LinkedNode<T> next = current.getNext();
+                    if (next != null && comparator.compare(current.getItem(), next.getItem()) > 0) {
+                        T aux = current.getItem();
+                        current.setItem(next.getItem());
+                        next.setItem(aux);
+                        wasChanged = true;
+                    }
+                    current = next;
+                }
+            }
+        }
     }
+
 }
