@@ -41,15 +41,15 @@ class LinkedNode&lt;T&gt; {
 <span class="fc" id="L41">    }</span>
 
     boolean isFirstNode() {
-<span class="nc bnc" id="L44" title="All 2 branches missed.">        return previous == null;</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        return previous == null;</span>
     }
 
     boolean isLastNode() {
-<span class="nc bnc" id="L48" title="All 2 branches missed.">        return next == null;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        return next == null;</span>
     }
 
     boolean isNotATerminalNode() {
-<span class="nc bnc" id="L52" title="All 4 branches missed.">        return !(isFirstNode() || isLastNode());</span>
+<span class="pc bpc" id="L52" title="1 of 4 branches missed.">        return !(isFirstNode() || isLastNode());</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
