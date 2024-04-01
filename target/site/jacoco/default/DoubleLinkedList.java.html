@@ -19,120 +19,120 @@ public class DoubleLinkedList&lt;T&gt; implements DoubleLinkedQueue&lt;T&gt; {
 <span class="fc bfc" id="L19" title="All 2 branches covered.">        if (size == 0) {</span>
 <span class="fc" id="L20">            last = node;</span>
         } else {
-<span class="fc" id="L22">            first.setPrevious(node);</span>
+<span class="fc" id="L22">            first.isNotATerminalNode();</span>
+<span class="fc" id="L23">            first.setPrevious(node);</span>
         }
-<span class="fc" id="L24">        first = node;</span>
-<span class="fc" id="L25">        size++;</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L25">        first = node;</span>
+<span class="fc" id="L26">        size++;</span>
+<span class="fc" id="L27">    }</span>
 
     @Override
     public void append(T value) {
-<span class="fc" id="L30">        LinkedNode&lt;T&gt; node = new LinkedNode&lt;&gt;(value, last, null);</span>
-<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (size == 0) {</span>
-<span class="fc" id="L32">            first = node;</span>
+<span class="fc" id="L31">        LinkedNode&lt;T&gt; node = new LinkedNode&lt;&gt;(value, last, null);</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (size == 0) {</span>
+<span class="fc" id="L33">            first = node;</span>
         } else {
-<span class="fc" id="L34">            last.setNext(node);</span>
+<span class="fc" id="L35">            last.isNotATerminalNode();</span>
+<span class="fc" id="L36">            last.setNext(node);</span>
         }
-<span class="fc" id="L36">        last = node;</span>
-<span class="fc" id="L37">        size++;</span>
+<span class="fc" id="L38">        last = node;</span>
+<span class="fc" id="L39">        size++;</span>
 
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L41">    }</span>
 
     @Override
     public void deleteFirst() {
-<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (size &gt; 0) {</span>
-<span class="fc" id="L44">            first.setPrevious(null);</span>
-<span class="fc" id="L45">            first = first.getNext();</span>
-<span class="fc" id="L46">            size--;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (size &gt; 0) {</span>
+<span class="fc" id="L46">            first.setPrevious(null);</span>
+<span class="fc" id="L47">            first = first.getNext();</span>
+<span class="fc" id="L48">            size--;</span>
         } else {
-<span class="fc" id="L48">            throw new DoubleLinkedQueueException(&quot;No hay nodos en el arbol&quot;);</span>
+<span class="fc" id="L50">            throw new DoubleLinkedQueueException(&quot;No hay nodos en el arbol&quot;);</span>
         }
-<span class="fc" id="L50">    }</span>
+<span class="fc" id="L52">    }</span>
 
     @Override
     public void deleteLast() {
-<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (size &gt; 0) {</span>
-<span class="fc" id="L55">            last.setNext(null);</span>
-<span class="fc" id="L56">            last = last.getPrevious();</span>
-<span class="fc" id="L57">            size--;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (size &gt; 0) {</span>
+<span class="fc" id="L57">            last.setNext(null);</span>
+<span class="fc" id="L58">            last = last.getPrevious();</span>
+<span class="fc" id="L59">            size--;</span>
         } else {
-<span class="fc" id="L59">            throw new DoubleLinkedQueueException(&quot;No hay nodos en el arbol&quot;);</span>
+<span class="fc" id="L61">            throw new DoubleLinkedQueueException(&quot;No hay nodos en el arbol&quot;);</span>
         }
-<span class="fc" id="L61">    }</span>
+<span class="fc" id="L63">    }</span>
 
     @Override
     public T first() {
-<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (size &gt; 0) {</span>
-<span class="fc" id="L66">            return first.getItem();</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (size &gt; 0) {</span>
+<span class="fc" id="L68">            return first.getItem();</span>
         }
-<span class="fc" id="L68">        return null;</span>
+<span class="fc" id="L70">        return null;</span>
     }
 
     @Override
     public T last() {
-<span class="fc bfc" id="L73" title="All 2 branches covered.">        if (size &gt; 0) {</span>
-<span class="fc" id="L74">            return last.getItem();</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if (size &gt; 0) {</span>
+<span class="fc" id="L76">            return last.getItem();</span>
         }
-<span class="fc" id="L76">        return null;</span>
+<span class="fc" id="L78">        return null;</span>
     }
 
     @Override
     public int size() {
-<span class="fc" id="L81">        return size;</span>
+<span class="fc" id="L83">        return size;</span>
     }
 
     @Override
     public T get(int index) {
-<span class="fc bfc" id="L86" title="All 4 branches covered.">        if (index &gt;= size || index &lt; 0) {</span>
-<span class="fc" id="L87">            throw new DoubleLinkedQueueException(&quot;Index out of bounds&quot;);</span>
+<span class="fc bfc" id="L88" title="All 4 branches covered.">        if (index &gt;= size || index &lt; 0) {</span>
+<span class="fc" id="L89">            throw new DoubleLinkedQueueException(&quot;Index out of bounds&quot;);</span>
         }
-<span class="fc" id="L89">        int i = 0;</span>
-<span class="fc" id="L90">        LinkedNode&lt;T&gt; aux = first;</span>
-<span class="fc bfc" id="L91" title="All 2 branches covered.">        while (i != index) {</span>
-<span class="fc" id="L92">            aux.isNotATerminalNode();</span>
-<span class="fc" id="L93">            aux = aux.getNext();</span>
-<span class="fc" id="L94">            i++;</span>
+<span class="fc" id="L91">        int i = 0;</span>
+<span class="fc" id="L92">        LinkedNode&lt;T&gt; aux = first;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">        while (i != index) {</span>
+<span class="fc" id="L94">            aux.isNotATerminalNode();</span>
+<span class="fc" id="L95">            aux = aux.getNext();</span>
+<span class="fc" id="L96">            i++;</span>
         }
-<span class="fc" id="L96">        return aux.getItem();</span>
+<span class="fc" id="L98">        return aux.getItem();</span>
     }
 
     @Override
     public boolean contains(T value) {
-<span class="fc" id="L101">        LinkedNode&lt;T&gt; aux = first;</span>
-<span class="fc bfc" id="L102" title="All 2 branches covered.">        while (aux != null) {</span>
-<span class="fc bfc" id="L103" title="All 2 branches covered.">            if (value.equals(aux.getItem())) {</span>
-<span class="fc" id="L104">                return true;</span>
+<span class="fc" id="L103">        LinkedNode&lt;T&gt; aux = first;</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        while (aux != null) {</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">            if (value.equals(aux.getItem())) {</span>
+<span class="fc" id="L106">                return true;</span>
             }
-<span class="fc" id="L106">            aux = aux.getNext();</span>
+<span class="fc" id="L108">            aux = aux.getNext();</span>
         }
-<span class="fc" id="L108">        return false;</span>
+<span class="fc" id="L110">        return false;</span>
     }
 
     @Override
     public void remove(T value) {
-<span class="fc bfc" id="L113" title="All 2 branches covered.">        if (first != null) {</span>
-<span class="fc bfc" id="L114" title="All 2 branches covered.">            if (first.getItem().equals(value)) {</span>
-<span class="fc" id="L115">                first = first.getNext();</span>
-<span class="fc bfc" id="L116" title="All 2 branches covered.">                if (first == null) {</span>
-<span class="fc" id="L117">                    last = null;</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (first != null) {</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">            if (first.getItem().equals(value)) {</span>
+<span class="fc" id="L117">                first = first.getNext();</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">                if (first == null) {</span>
+<span class="fc" id="L119">                    last = null;</span>
                 } else {
-<span class="fc" id="L119">                    first.isFirstNode();</span>
+<span class="fc" id="L121">                    first.isFirstNode();</span>
                 }
-<span class="fc" id="L121">                size--;</span>
+<span class="fc" id="L123">                size--;</span>
             } else {
-<span class="fc" id="L123">                boolean found = false;</span>
-<span class="fc" id="L124">                LinkedNode&lt;T&gt; aux = first;</span>
-<span class="fc bfc" id="L125" title="All 4 branches covered.">                while (aux != null &amp;&amp; !found) {</span>
-<span class="fc bfc" id="L126" title="All 2 branches covered.">                    if (aux.getItem().equals(value)) {</span>
-<span class="fc bfc" id="L127" title="All 2 branches covered.">                        if (aux == last) {</span>
-<span class="fc" id="L128">                            last = aux.getPrevious();</span>
-<span class="fc" id="L129">                            last.isLastNode();</span>
-<span class="fc" id="L130">                            last.setNext(null);</span>
+<span class="fc" id="L125">                boolean found = false;</span>
+<span class="fc" id="L126">                LinkedNode&lt;T&gt; aux = first;</span>
+<span class="fc bfc" id="L127" title="All 4 branches covered.">                while (aux != null &amp;&amp; !found) {</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">                    if (aux.getItem().equals(value)) {</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">                        if (aux == last) {</span>
+<span class="fc" id="L130">                            last = aux.getPrevious();</span>
+<span class="fc" id="L131">                            last.isLastNode();</span>
+<span class="fc" id="L132">                            last.setNext(null);</span>
                         } else {
-<span class="fc" id="L132">                            aux.getPrevious().setNext(aux.getNext());</span>
-<span class="pc bpc" id="L133" title="1 of 2 branches missed.">                            if (aux.getNext() != null) {</span>
-<span class="fc" id="L134">                                aux.getNext().setPrevious(aux.getPrevious());</span>
-                            }
+<span class="fc" id="L134">                            aux.getPrevious().setNext(aux.getNext());</span>
+<span class="fc" id="L135">                            aux.getNext().setPrevious(aux.getPrevious());</span>
                         }
 <span class="fc" id="L137">                        size--;</span>
 <span class="fc" id="L138">                        found = true;</span>

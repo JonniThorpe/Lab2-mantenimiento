@@ -19,6 +19,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
         if (size == 0) {
             last = node;
         } else {
+            first.isNotATerminalNode();
             first.setPrevious(node);
         }
         first = node;
@@ -31,6 +32,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
         if (size == 0) {
             first = node;
         } else {
+            last.isNotATerminalNode();
             last.setNext(node);
         }
         last = node;
@@ -130,9 +132,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
                             last.setNext(null);
                         } else {
                             aux.getPrevious().setNext(aux.getNext());
-                            if (aux.getNext() != null) {
-                                aux.getNext().setPrevious(aux.getPrevious());
-                            }
+                            aux.getNext().setPrevious(aux.getPrevious());
                         }
                         size--;
                         found = true;
