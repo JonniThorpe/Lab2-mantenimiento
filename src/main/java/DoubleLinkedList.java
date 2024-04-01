@@ -1,6 +1,4 @@
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.Objects;
 
 public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
 
@@ -43,8 +41,9 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
     @Override
     public void deleteFirst() {
         if (size > 0) {
-            first.setPrevious(null);
-            first = first.getNext();
+            if (first.isFirstNode()) {
+                first = first.getNext();
+            }
             size--;
         } else {
             throw new DoubleLinkedQueueException("No hay nodos en el arbol");
@@ -54,8 +53,9 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
     @Override
     public void deleteLast() {
         if (size > 0) {
-            last.setNext(null);
-            last = last.getPrevious();
+            if (last.isLastNode()) {
+                last = last.getPrevious();
+            }
             size--;
         } else {
             throw new DoubleLinkedQueueException("No hay nodos en el arbol");
@@ -91,6 +91,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
         int i = 0;
         LinkedNode<T> aux = first;
         while (i != index) {
+            aux.isNotATerminalNode();
             aux = aux.getNext();
             i++;
         }
@@ -117,7 +118,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
                 if (first == null) {
                     last = null;
                 } else {
-                    first.setPrevious(null);
+                    first.isFirstNode();
                 }
                 size--;
             } else {
@@ -128,6 +129,7 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
                         if (aux == last) {
                             last = aux.getPrevious();
                             if (last != null) {
+                                //last.isLastNode();
                                 last.setNext(null);
                             }
                         } else {

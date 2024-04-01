@@ -33,6 +33,10 @@ public class DoubleLinkedListTest {
         assertEquals(doublelist.first(), "pizza");
 
     }
+    @Test
+    public void coverage(){
+        doublelist.first();
+    }
 
     @Test
     public void append_ShouldAddLast_toDoubleLinkedList() {
@@ -179,7 +183,7 @@ public class DoubleLinkedListTest {
         @DisplayName("remove_withEmptyList_shouldNotDoAnything")
         void remove_withEmptyList_shouldNotDoAnything() {
             doublelist.remove(1);
-            assertTrue(doublelist.size() == 0);
+            assertEquals(0, doublelist.size());
         }
     }
 
