@@ -41,9 +41,8 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
     @Override
     public void deleteFirst() {
         if (size > 0) {
-            if (first.isFirstNode()) {
-                first = first.getNext();
-            }
+            first.setPrevious(null);
+            first = first.getNext();
             size--;
         } else {
             throw new DoubleLinkedQueueException("No hay nodos en el arbol");
@@ -53,9 +52,8 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
     @Override
     public void deleteLast() {
         if (size > 0) {
-            if (last.isLastNode()) {
-                last = last.getPrevious();
-            }
+            last.setNext(null);
+            last = last.getPrevious();
             size--;
         } else {
             throw new DoubleLinkedQueueException("No hay nodos en el arbol");
@@ -128,10 +126,8 @@ public class DoubleLinkedList<T> implements DoubleLinkedQueue<T> {
                     if (aux.getItem().equals(value)) {
                         if (aux == last) {
                             last = aux.getPrevious();
-                            if (last != null) {
-                                //last.isLastNode();
-                                last.setNext(null);
-                            }
+                            last.isLastNode();
+                            last.setNext(null);
                         } else {
                             aux.getPrevious().setNext(aux.getNext());
                             if (aux.getNext() != null) {
